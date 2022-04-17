@@ -13,6 +13,8 @@
 	
 	img {
   		image-rendering: pixelated;
+		width: auto;
+		height: 50;
 	}
 
 	label.label-checkbox {
@@ -28,21 +30,21 @@
 	}
 
 	label.label-checkbox span {
-		padding: 11px 21px;
-		border: 1px solid #ccc;
+		padding: 15px 15px;
+		border: 1px solid rgb(255, 255, 255);
 		display: inline-block;
-		color: #202020;
-		border-radius: 6px;
+		color: #ffffff;
+		border-radius: 10px;
 		margin: 7px;
-		background: #f5f5f5;
+		background: #000000;
 		user-select: none;
 		font-family: sans-serif;
 	}
 
 	label.label-checkbox input:checked + span {
-		box-shadow: inset 1px 2px 5px rgb(0, 0, 0);
-		transform: translateY(1px);
-		background: #000000;
+		box-shadow: inset 1px 2px 5px rgb(204, 204, 204);
+		transform: translateY(3px);
+		background: #ffffff;
 		color: #005f20;
 		font-family: sans-serif;
 		font-weight: bolder;
@@ -52,12 +54,9 @@
 
 <body>
 	<h1>Pressed buttons with Checkbox</h1>
-	<label class="label-checkbox"> 
-		<input type="checkbox"> 
-		<span>
-			<img src="./img/Tarots.png" width=auto height="50" style="cursor:pointer" >
-		</span> 
-	</label>
+	<label class="label-checkbox"> <input type="checkbox"> <span> <img src="./img/Whip.png"> </span> </label>
+	<label class="label-checkbox"> <input type="checkbox"> <span> <img src="./img/HeartBlack.png"> </span> </label>
+	<label class="label-checkbox"> <input type="checkbox"> <span> <img src="./img/Whip2.png"> </span> </label>
 	<hr>
 	<label class="label-checkbox"> <input type="checkbox" checked> <span>Styled</span> </label>
 	<label class="label-checkbox"> <input type="checkbox"> <span>As</span> </label>
