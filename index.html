@@ -4,6 +4,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> -->
+
 <style>
 	body {
 		background-color: rgb(0, 0, 0);
@@ -171,4 +173,45 @@
 
 	</table>
 
+	<!-- <script>
+        $(".parent input").on('click', function () {
+            var _parent = $(this);
+            var nextli = $(this).parent().next().children().children();
+
+            if (_parent.prop('checked')) {
+                console.log('parent checked');
+                nextli.each(function () {
+                    $(this).children().prop('checked', true);
+                });
+
+            } else {
+                console.log('parent un checked');
+                nextli.each(function () {
+                    $(this).children().prop('checked', false);
+                });
+
+            }
+        });
+
+        $(".child input").on('click', function () {
+
+            var ths = $(this);
+            var parentinput = ths.closest('div').prev().children();
+            var sibblingsli = ths.closest('ul').find('li');
+
+            if (ths.prop('checked')) {
+                console.log('child checked');
+                parentinput.prop('checked', true);
+            } else {
+                console.log('child unchecked');
+                var status = true;
+                sibblingsli.each(function () {
+                    console.log('sibb');
+                    if ($(this).children().prop('checked')) status = false;
+                });
+                if (status) parentinput.prop('checked', false);
+            }
+        });
+    </script> -->
+	
 </body>
