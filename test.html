@@ -1,60 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <!-- https://stackoverflow.com/a/19645364 -->
-    <!-- group checkboxes - how to uncheck the parent box if any child boxes are unchecked? -->
-    <!-- https://stackoverflow.com/questions/18537609/how-to-check-all-checkboxes-using-jquery -->
+<!-- https://stackoverflow.com/a/19645364 -->
+<!-- group checkboxes - how to uncheck the parent box if any child boxes are unchecked? -->
+<!-- https://stackoverflow.com/questions/18537609/how-to-check-all-checkboxes-using-jquery -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#parent").click(function () {
-            $(".child").prop("checked", this.checked);
+
+<body>
+    <div class="a">
+        <form>
+            <fieldset><input type="checkbox" id="a#parent" /> Check/Uncheck All
+                <ul>
+                    <li>
+                        <input type="checkbox" class="child" /> Checkbox 1
+                    </li>
+                    <li>
+                        <input type="checkbox" class="child" /> Checkbox 2
+                    </li>
+                    <li>
+                        <input type="checkbox" class="child" /> Checkbox 3
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="b">
+        <form>
+            <fieldset><input type="checkbox" id="b#parent" /> Check/Uncheck All
+                <ul>
+                    <li>
+                        <input type="checkbox" class="child" /> Checkbox 1
+                    </li>
+                    <li>
+                        <input type="checkbox" class="child" /> Checkbox 2
+                    </li>
+                    <li>
+                        <input type="checkbox" class="child" /> Checkbox 3
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#parent").click(function () {
+                $(".child").prop("checked", this.checked);
+            });
+
+            $('.child').click(function () {
+                if ($('.child:checked').length == $('.child').length) {
+                    $('#parent').prop('checked', true);
+                } else {
+                    $('#parent').prop('checked', false);
+                }
+            });
         });
-
-        $('.child').click(function () {
-            if ($('.child:checked').length == $('.child').length) {
-                $('#parent').prop('checked', true);
-            } else {
-                $('#parent').prop('checked', false);
-            }
-        });
-    });
-</script>
-
-<div class="a">
-    <form>
-        <fieldset><input type="checkbox" id="a#parent" /> Check/Uncheck All
-            <ul>
-                <li>
-                    <input type="checkbox" class="child" /> Checkbox 1
-                </li>
-                <li>
-                    <input type="checkbox" class="child" /> Checkbox 2
-                </li>
-                <li>
-                    <input type="checkbox" class="child" /> Checkbox 3
-                </li>
-            </ul>
-        </fieldset>
-    </form>
-</div>
-
-<div class="b">
-    <form>
-        <fieldset><input type="checkbox" id="b#parent" /> Check/Uncheck All
-            <ul>
-                <li>
-                    <input type="checkbox" class="child" /> Checkbox 1
-                </li>
-                <li>
-                    <input type="checkbox" class="child" /> Checkbox 2
-                </li>
-                <li>
-                    <input type="checkbox" class="child" /> Checkbox 3
-                </li>
-            </ul>
-        </fieldset>
-    </form>
-</div>
+    </script>
+</body>
 
 </html>

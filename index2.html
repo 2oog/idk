@@ -1,0 +1,353 @@
+<!-- https://stackoverflow.com/a/66550060 -->
+
+<title> lmao </title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+	body {
+		background-color: rgb(0, 0, 0);
+	}
+
+	h1 {
+		color: rgb(255, 255, 255);
+		font-family: sans-serif;
+	}
+
+	img {
+		image-rendering: pixelated;
+		width: 50;
+		height: 50;
+	}
+
+	table,
+	th,
+	td {
+		border: 1px solid rgb(70, 70, 70);
+	}
+
+	form {
+    	margin-block-end: 0px;
+	}
+
+	fieldset {
+		border-spacing: 0px;
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+		padding-block-start: 0px;
+		padding-inline-start: 0px;
+		padding-inline-end: 0px;
+		padding-block-end: 0px;
+		border: 0px;
+	}
+	
+	label.label-checkbox-parent {
+		cursor: pointer;
+	}
+
+	label.label-checkbox-parent input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	label.label-checkbox-parent span {
+		padding: 15px 15px;
+		border: 1px solid rgb(255, 255, 255);
+		display: inline-block;
+		color: #ffffff;
+		border-radius: 10px;
+		margin: 7px;
+		background: #000025;
+		user-select: none;
+		font-family: sans-serif;
+	}
+
+	label.label-checkbox-parent input:checked+span {
+		border: 1px solid #00a000;
+		box-shadow: inset 0px 0px 0px 4px #00a000, inset 1px 2px 5px rgb(204, 204, 204);
+		transform: translateY(3px);
+		background: rgb(255, 255, 255);
+		color: #005f20;
+		font-family: sans-serif;
+		font-weight: bolder;
+	}
+
+	label.label-checkbox-child {
+		cursor: pointer;
+	}
+
+	label.label-checkbox-child input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	label.label-checkbox-child span {
+		padding: 15px 15px;
+		border: 1px solid rgb(255, 255, 255);
+		display: inline-block;
+		color: #ffffff;
+		border-radius: 10px;
+		margin: 7px;
+		background: #000000;
+		user-select: none;
+		font-family: sans-serif;
+	}
+
+	label.label-checkbox-child input:checked+span {
+		box-shadow: inset 1px 2px 5px rgb(204, 204, 204);
+		transform: translateY(3px);
+		background: #ffffff;
+		color: #005f20;
+		font-family: sans-serif;
+		font-weight: bolder;
+	}
+</style>
+
+<body>
+    <script lang="text/javascript">
+        $(document).ready(
+            function () {
+
+                $('input.childCheckBox').change(function () {
+                    $(this).closest('fieldset').find('.parentCheckBox').prop('checked',
+                        $('input.childCheckBox').length === $('input.childCheckBox:checked').length
+                    );
+                });
+
+                //clicking the parent checkbox should check or uncheck all child checkboxes
+                $(".parentCheckBox").click(
+                    function () {
+                        $(this).parents('fieldset:eq(0)').find('.childCheckBox').prop('checked', this.checked);
+                    }
+                );
+                //clicking the last unchecked or checked checkbox should check or uncheck the parent checkbox
+                $('.childCheckBox').click(
+                    function () {
+                        if ($(this).parents('fieldset:eq(0)').find('.parentCheckBox').attr('checked') == true && this.checked == false)
+                            $(this).parents('fieldset:eq(0)').find('.parentCheckBox').attr('checked', false);
+                        if (this.checked == true) {
+                            var flag = true;
+                            $(this).parents('fieldset:eq(0)').find('.childCheckBox').each(
+                                function () {
+                                    if (this.checked == false)
+                                        flag = false;
+                                }
+                            );
+                            $(this).parents('fieldset:eq(0)').find('.parentCheckBox').attr('checked', flag);
+                        }
+                    }
+                );
+            }
+        );
+    </script>
+
+    <table style="height: 100%; width: 100%;">
+        <tr>
+            <th>
+                <form>
+                    <fieldset>
+                        <label class="label-checkbox-parent">
+                            <input type="checkbox" id="1" class="parentCheckBox" /> <span> <img src="./img/Whip2.png" /> </span>
+                        </label>
+                        <label class="label-checkbox-child">
+                            <input type="checkbox" value="" name="" class="childCheckBox" /> <span> <img src="./img/HeartBlack.png" /> </span>
+                        </label>
+                        <label class="label-checkbox-child">
+                            <input type="checkbox" value="" name="" class="childCheckBox" /> <span> <img src="./img/Whip.png" /> </span>
+                        </label>
+                    </fieldset>
+                </form>
+            </th>
+            <th>
+                <form>
+                    <fieldset>
+                        <label class="label-checkbox-parent">
+                            <input type="checkbox" id="2" class="parentCheckBox" /> <span> <img src="./img/WandHoly2.png" /> </span>
+                        </label>
+                        <label class="label-checkbox-child">
+                            <input type="checkbox" value="" name="" class="childCheckBox" /> <span> <img src="./img/WandHoly.png" /> </span>
+                        </label>
+                        <label class="label-checkbox-child">
+                            <input type="checkbox" value="" name="" class="childCheckBox" /> <span> <img src="./img/Book2.png" /> </span>
+                        </label>
+                    </fieldset>
+                </form>
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Knife2.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Knife.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Gauntlet.png" /> </span>
+                </label>
+            </th>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Scythe.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Axe.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Candelabra.png" /> </span>
+                </label>
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/HeavenSword.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Cross.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Clover.png" /> </span>
+                </label>
+            </th>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/UnholyBook.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/HolyBook.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/EmblemEye.png" /> </span>
+                </label>
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Hellfire.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/WandFire.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Leaf.png" /> </span>
+                </label>
+            </th>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/OrbOrange.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Garlic.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/HeartRuby.png" /> </span>
+                </label>
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Water2.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/HolyWater.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/OrbGlow.png" /> </span>
+                </label>
+            </th>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Thunderloop.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/LighningRing.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Ring.png" /> </span>
+                </label>
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Pentagram2.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Pentagram.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Crown.png" /> </span>
+                </label>
+            </th>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Song2.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Song.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Curse.png" /> </span>
+                </label>
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Silf3.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Silf1.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Silf2.png" /> </span>
+                </label>
+            </th>
+            <th>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Carnage.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Diamond2.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/ArmorIron.png" /> </span>
+                </label>
+            </th>
+        </tr>
+
+        <tr>
+            <th colspan="2">
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Guns3.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Guns.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Guns2.png" /> </span>
+                </label>
+                <label class="label-checkbox-child">
+                    <input type="checkbox" /> <span> <img src="./img/Tiramisu.png" /> </span>
+                </label>
+            </th>
+        </tr>
+    </table>
+</body>
